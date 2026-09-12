@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Classifier</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #005cbf;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            border-bottom: 4px solid #003f7f;
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+        .upload-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .upload-section input[type="file"] {
+            padding: 12px;
+            font-size: 18px;
+            background-color: #ffffff;
+            border: 2px solid #005cbf;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+            margin-top: 15px;
+        }
+        .upload-section button {
+            background-color: #005cbf;
+            color: white;
+            font-size: 18px;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .upload-section button:hover {
+            background-color: #003f7f;
+        }
+        .image-preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .image-preview img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .result {
+            background-color: #e9f7fd;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .result h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #005cbf;
+        }
+        .result p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin: 10px 0;
+        }
+        .result .label {
+            font-weight: 600;
+            color: #005cbf;
+        }
+        .result .definition, .result .treatment {
+            font-style: italic;
+        }
+        .result .treatment {
+            color: #2d8724;
+        }
+        .tumor-info {
+            background-color: #e6f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 2px solid #005cbf;
+        }
+        .tumor-info h3 {
+            color: #003f7f;
+            text-align: center;
+        }
+        .tumor-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .tumor-info li {
+            background-color: #ffffff;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .success-stories {
+            background-color: #f4f4f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 2px solid #005cbf;
+        }
+        .success-stories h4 {
+            color: #005cbf;
+        }
+        footer {
+            background-color: #005cbf;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        🧠 Brain Tumor Classifier
+    </header>
+
+    <main>
+        <div class="upload-section">
+            <h3>Upload Your Brain MRI Image for Prediction</h3>
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <br><br>
+                <button type="submit">Predict</button>
+            </form>
+        </div>
+
+        {% if image %}
+        <div class="image-preview">
+            <h3>Uploaded MRI Image:</h3>
+            <img src="{{ image }}" alt="Uploaded Image">
+        </div>
+        {% endif %}
+
+        {% if result %}
+        <div class="result">
+            <h2>Prediction: {{ result.label }}</h2>
+            <p><strong class="label">Confidence:</strong> {{ result.confidence | round(2) }}%</p>
+            <p><strong class="label">Definition:</strong></p>
+            <p class="definition">{{ result.definition }}</p>
+            <p><strong class="label">Recommended Treatment:</strong></p>
+            <p class="treatment">{{ result.treatment }}</p>
+        </div>
+        {% endif %}
+
+        <div class="tumor-info">
+            <h3>Types of Brain Tumors</h3>
+            <ul>
+                <li><strong>Glioma Tumor:</strong> Arises from glial cells in the brain or spine. Often malignant and requires aggressive treatment, including surgery, radiation therapy, and chemotherapy.</li>
+                <li><strong>Meningioma Tumor:</strong> Forms from the membranes covering the brain and spinal cord. Typically benign and slow-growing, requiring surgery or radiation therapy if recurrence occurs.</li>
+                <li><strong>Pituitary Tumor:</strong> Develops in the pituitary gland, affecting hormone production. Treatment options include medication, surgery, and radiation therapy, depending on the type.</li>
+            
+            </ul>
+        </div>
+
+        <div class="success-stories">
+            <h4>Success Stories:</h4>
+            <ul>
+                <li><strong>Jane Doe:</strong> A successful recovery from glioma tumor after undergoing surgery and chemotherapy. Jane is now living a full, active life.</li>
+                <li><strong>John Smith:</strong> John had a meningioma tumor, and after surgery and radiation therapy, he is now tumor-free and in good health.</li>
+                <li><strong>Mary Ann:</strong> A pituitary tumor diagnosis led to successful treatment using a combination of medication and surgery, allowing Mary to return to her normal routine.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>For medical use only. Please consult a qualified healthcare professional for diagnosis and treatment.</p>
+    </footer>
+</body>
+</html>
