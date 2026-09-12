@@ -11,13 +11,13 @@ Application web (Flask) qui permet d'uploader une image IRM du cerveau et de pr�
 ## Données d'entraînement
 
 Le modèle a été entraîné sur le dataset **Brain Tumor MRI Dataset** disponible sur Kaggle :
-👉 https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
+ https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
 
 ## Modèle pré-entraîné (`mon_model_vgg16.h5`)
 
 Le fichier du modèle est trop volumineux pour être hébergé directement sur GitHub. Télécharge-le ici :
 
-👉 https://drive.google.com/file/d/1fnDVF8OVfA4B0cLzF9nKqv2NrqX9-6vO/view?usp=drive_link
+ https://drive.google.com/file/d/1fnDVF8OVfA4B0cLzF9nKqv2NrqX9-6vO/view?usp=drive_link
 
 Une fois téléchargé, place `mon_model_vgg16.h5` à la racine du projet (au même niveau que `app.py`).
 
