@@ -1,66 +1,66 @@
-# Brain Tumor Detection — Application Web
+# Brain Tumor Detection — Web Application
 
-Application web (Flask) qui permet d'uploader une image IRM du cerveau et de prédire, à l'aide d'un modèle CNN basé sur VGG16, s'il s'agit d'un gliome, d'un méningiome, d'une tumeur pituitaire, ou d'une absence de tumeur.
+A Flask web application that lets users upload a brain MRI image and predicts, using a VGG16-based CNN model, whether it shows a glioma, meningioma, pituitary tumor, or no tumor.
 
-## Aperçu
+## Overview
 
-- Upload d'une image IRM via une interface web simple
-- Prédiction avec un modèle VGG16 entraîné (`mon_model_vgg16.h5`)
-- Affichage du résultat avec le taux de confiance, une définition du type de tumeur détecté, et les traitements recommandés
+- Upload an MRI image through a simple web interface
+- Prediction using a trained VGG16 model (`mon_model_vgg16.h5`)
+- Displays the result with confidence score, a definition of the detected tumor type, and recommended treatments
 
-## Données d'entraînement
+## Training Data
 
-Le modèle a été entraîné sur le dataset **Brain Tumor MRI Dataset** disponible sur Kaggle :
- https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
+The model was trained on the **Brain Tumor MRI Dataset** available on Kaggle:
+https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
 
-## Modèle pré-entraîné (`mon_model_vgg16.h5`)
+## Pretrained Model (`mon_model_vgg16.h5`)
 
-Le fichier du modèle est trop volumineux pour être hébergé directement sur GitHub. Télécharge-le ici :
+The model file is too large to host directly on GitHub. Download it here:
 
- https://drive.google.com/file/d/1fnDVF8OVfA4B0cLzF9nKqv2NrqX9-6vO/view?usp=drive_link
+https://drive.google.com/file/d/1fnDVF8OVfA4B0cLzF9nKqv2NrqX9-6vO/view?usp=drive_link
 
-Une fois téléchargé, place `mon_model_vgg16.h5` à la racine du projet (au même niveau que `app.py`).
+Once downloaded, place `mon_model_vgg16.h5` at the root of the project (same level as `app.py`).
 
-> Le modèle attend des images en **240x240 pixels** (RGB), a été entraîné avec **Keras 3.9.0** sur un backend TensorFlow.
+> The model expects **240x240 pixel** images (RGB), and was trained with **Keras 3.9.0** on a TensorFlow backend.
 
 ## Installation
 
-1. Cloner le repo :
+1. Clone the repo:
    ```bash
-   git clone <URL_DE_TON_REPO>
+   git clone <YOUR_REPO_URL>
    cd brain-tumor-detection
    ```
 
-2. Créer un environnement virtuel :
+2. Create a virtual environment:
    ```bash
    python -m venv venv
    venv\Scripts\activate      # Windows
    source venv/bin/activate   # macOS/Linux
    ```
 
-3. Installer les dépendances :
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Télécharger `mon_model_vgg16.h5` (voir section ci-dessus) et le placer à la racine du projet.
+4. Download `mon_model_vgg16.h5` (see section above) and place it at the root of the project.
 
-5. Vérifier que le dossier `static/uploads/` existe (il doit contenir un fichier `.gitkeep`).
+5. Make sure the `static/uploads/` folder exists (it should contain a `.gitkeep` file).
 
-## Lancer l'application
+## Running the Application
 
 ```bash
 python app.py
 ```
 
-Puis ouvrir un navigateur sur `http://127.0.0.1:5000`.
+Then open a browser at `http://127.0.0.1:5000`.
 
-Sous Windows, tu peux aussi double-cliquer sur `lancer_app.bat` (après avoir créé et activé ton propre `venv` comme indiqué ci-dessus).
+On Windows, you can also double-click `lancer_app.bat` (after creating and activating your own `venv` as described above).
 
 ## Technologies
 
 Python, Flask, TensorFlow / Keras (VGG16), Pillow, HTML/CSS (Jinja2)
 
-## Avertissement
+## Disclaimer
 
-Ce projet est un exercice académique / portfolio. Il ne s'agit pas d'un outil de diagnostic médical validé et ne doit en aucun cas remplacer l'avis d'un professionnel de santé.
+This project is an academic/portfolio exercise. It is not a validated medical diagnostic tool and should never replace the advice of a healthcare professional.
